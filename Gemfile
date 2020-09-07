@@ -29,7 +29,8 @@ group :development, :test do
   gem 'cucumber-rails-training-wheels'
   gem 'capybara', '~> 3.33'
   gem 'launchy'
-  gem 'simplecov', :require => false
+  gem 'simplecov', '~> 0.17.1', :require => false
+  #gem 'simplecov', '~> 0.17.1'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails', '~> 6.1'
