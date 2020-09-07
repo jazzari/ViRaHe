@@ -30,14 +30,12 @@ group :development, :test do
   gem 'capybara', '~> 3.33'
   gem 'launchy'
   gem 'simplecov', '~> 0.17.1', :require => false
-  #gem 'simplecov', '~> 0.17.1'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails', '~> 6.1'
   gem 'pry'
   gem 'pry-byebug'
   gem 'database_cleaner'
-  #gem 'ZenTest', '~> 3.4'
 end
 
 group :development do

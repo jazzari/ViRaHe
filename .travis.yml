@@ -14,9 +14,9 @@ before_install:
 script:
   - bundle exec rake db:setup
   - bundle exec rspec
-  - $CCTR format-coverage --output coverage/codeclimate.$SUITE.json
+  - $CCTR format-coverage -t simplecov --output coverage/codeclimate.$SUITE.json
   - bundle exec cucumber
-  - $CCTR format-coverage --output coverage/codeclimate.$SUITE.json
+  - $CCTR format-coverage -t simplecov --output coverage/codeclimate.$SUITE.json
 after_script:
   - $CCTR sum-coverage coverage/codeclimate.*.json | $CCTR upload-coverage
   - $CCTR after-build --exit-code $TRAVIS_TEST_RESULT
