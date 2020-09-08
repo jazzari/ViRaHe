@@ -113,6 +113,47 @@ When /^I sign out$/ do
 	visit '/users/sign_out'
 end
 
+When /^I edit my account$/ do
+	click_link "Edit account"
+	fill_in "Email", with: "new_mail@example.org"
+	fill_in "user_current_password", with: @visitor[:password] 
+end
+
+When /^I save the edit form$/ do 
+	click_button "Update"
+end
+
+When /^I edit with an invalid email address$/ do 
+	click_link "Edit account"
+	fill_in "Email", with: "new_mail"
+	fill_in "user_current_password", with: @visitor[:password]
+end
+
+When /^I edit my password$/ do
+	click_link "Edit account"
+	fill_in "Password", with: "edited_password"
+	fill_in "Password confirmation", with: "edited_password"
+	fill_in "user_current_password", with: @visitor[:password] 
+end
+
+When /^I edit my password with missing confirmation$/ do
+	click_link "Edit account"
+	fill_in "Password", with: "edited_password"
+	fill_in "Password confirmation", with: ""
+	fill_in "user_current_password", with: @visitor[:password] 
+end
+
+When /^I edit my password with mismatched confirmation$/ do
+	click_link "Edit account"
+	fill_in "Password", with: "edited_password"
+	fill_in "Password confirmation", with: "edit_password"
+	fill_in "user_current_password", with: @visitor[:password] 
+end
+
+When /^I don't enter my current password$/ do
+	fill_in "user_current_password", with: "" 
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
 	expect(page).to have_content "Welcome! You have signed up successfully."
@@ -154,5 +195,10 @@ Then /^I should see a sign out message$/ do
 	expect(page).to have_content "Signed out successfully" 
 end
 
+Then /^I should see an account updated message$/ do
+	expect(page).to have_content "Your account has been updated successfully" 
+end
 
-
+Then /^I should see a password missing message$/ do 
+	expect(page).to have_content "Current password can't be blank"
+end
