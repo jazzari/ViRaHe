@@ -6,8 +6,9 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %header
+    = render 'layouts/messages'
+    = render 'layouts/navigation'
   %body
-    %p{:class => "”notice”"}= notice
-    %p{:class => "”alert”"}= alert
     = yield
 

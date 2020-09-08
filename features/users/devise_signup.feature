@@ -27,3 +27,5 @@ Feature: Devise Authentication
 		When I sign up with a mismatched password confirmation
 		Then I should see a mismatched password message
 
+	
+

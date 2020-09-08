@@ -25,13 +25,33 @@ def find_user
 	@user ||= User.where(email: @visitor[:email]).first
 end
 
+def sign_in
+	visit '/users/sign_in'
+	fill_in "user_email", with: @visitor[:email]
+	fill_in "user_password", with: @visitor[:password]
+	click_button "Log in"
+end
 
-    ## GIVEN ##
-Given /^I am not logged in$/ do 
-	visit 'users/sign_in'
+def create_user
+	create_visitor
+	delete_user
+	@user = FactoryBot.create(:user)
 end
 
 
+    ## GIVEN ##
+Given /^(?:|I )am not logged in$/ do 
+	visit 'users/sign_in'
+end
+
+Given /^I do not exist as a user$/ do 
+	create_visitor
+	delete_user
+end
+
+Given /^I exist as a user$/ do 
+	create_user
+end
 
 	## WHEN ##
 When /^I sign up with valid data$/ do 
@@ -63,6 +83,27 @@ When /^I sign up with a mismatched password confirmation$/ do
 	sign_up
 end
 
+When /^I sign in with valid credentials$/ do
+	create_visitor
+	sign_in
+end
+
+When /^I see a successful sign in message$/ do 
+	expect(page).to have_content "Signed in successfully"
+end
+
+When /^I return to the site$/ do
+	visit '/' 
+end
+
+When /^I sign in with a wrong email$/ do 
+	@visitor = @visitor.merge(email: "wrongemail@example.org")
+end
+
+When /^I sign in with a wrong password$/ do 
+	@visitor = @visitor.merge(password: "wrongpassword")
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
 	expect(page).to have_content "Welcome! You have signed up successfully."
@@ -82,5 +123,21 @@ end
 
 Then /^I should see a mismatched password message$/ do 
 	expect(page).to have_content "Password confirmation doesn't match Password"
+end
+
+Then /^I see an invalid login message$/ do 
+	expect(page).to have_content "Sign up"
+	expect(page).to have_content "Forgot your password?"
+end
+
+Then /^I should be signed in$/ do 
+	expect(page).to have_content "Logout"
+	expect(page).to have_content "Edit account"
+end
+
+Then /^I should be signed out$/ do 
+	expect(page).to have_content "Sign up"
+	expect(page).to have_content "Log in"
+	expect(page).not_to have_content "Logout"
 end
 
