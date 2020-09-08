@@ -53,6 +53,11 @@ Given /^I exist as a user$/ do
 	create_user
 end
 
+Given /^I am logged in$/ do
+	create_user
+	sign_in 
+end
+
 	## WHEN ##
 When /^I sign up with valid data$/ do 
 	create_visitor
@@ -104,6 +109,10 @@ When /^I sign in with a wrong password$/ do
 	@visitor = @visitor.merge(password: "wrongpassword")
 end
 
+When /^I sign out$/ do
+	visit '/users/sign_out'
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
 	expect(page).to have_content "Welcome! You have signed up successfully."
@@ -140,4 +149,10 @@ Then /^I should be signed out$/ do
 	expect(page).to have_content "Log in"
 	expect(page).not_to have_content "Logout"
 end
+
+Then /^I should see a sign out message$/ do
+	expect(page).to have_content "Signed out successfully" 
+end
+
+
 
