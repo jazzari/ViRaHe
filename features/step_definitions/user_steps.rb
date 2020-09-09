@@ -192,7 +192,7 @@ Then /^I should be signed out$/ do
 end
 
 Then /^I should see a sign out message$/ do
-	expect(page).to have_content "Signed out successfully" 
+	expect(page).to have_content "You need to sign in or sign up before continuing" 
 end
 
 Then /^I should see an account updated message$/ do

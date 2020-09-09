@@ -8,6 +8,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'support/controller_helpers'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -40,6 +41,10 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.include Warden::Test::Helpers
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
 
 end
 
