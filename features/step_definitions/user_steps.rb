@@ -114,6 +114,7 @@ When /^I sign out$/ do
 end
 
 When /^I edit my account$/ do
+	#save_and_open_page
 	click_link "Edit account"
 	fill_in "Email", with: "new_mail@example.org"
 	fill_in "user_current_password", with: @visitor[:password] 
@@ -154,9 +155,14 @@ When /^I don't enter my current password$/ do
 	fill_in "user_current_password", with: "" 
 end
 
+When /^I confirm the email$/ do 
+	open_email("visitor@example.org")
+	visit_in_email("Confirm my account")
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
-	expect(page).to have_content "Welcome! You have signed up successfully."
+	expect(page).to have_content "Your email address has been successfully confirmed."
 end
 
 Then /^I should see an invalid email message$/ do 

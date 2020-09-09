@@ -28,6 +28,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'database_cleaner'
+  gem 'email_spec', '~> 2.2'
 end
 
 group :development do
