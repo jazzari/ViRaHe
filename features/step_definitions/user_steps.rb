@@ -12,7 +12,6 @@ end
 def sign_up
 	delete_user
 	visit '/users/sign_up'
-	#fill_in "user_name", with: @visitor[:name] 
 	fill_in "user_email", with: @visitor[:email]
 	fill_in "user_password", with: @visitor[:password]
 	fill_in "user_password_confirmation", with: @visitor[:password_confirmation]
@@ -114,7 +113,6 @@ When /^I sign out$/ do
 end
 
 When /^I edit my account$/ do
-	#save_and_open_page
 	click_link "Edit account"
 	fill_in "Email", with: "new_mail@example.org"
 	fill_in "user_current_password", with: @visitor[:password] 
