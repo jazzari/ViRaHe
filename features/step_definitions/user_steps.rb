@@ -88,7 +88,6 @@ When /^I sign up with a mismatched password confirmation$/ do
 end
 
 When /^I sign in with valid credentials$/ do
-	create_visitor
 	sign_in
 end
 
@@ -101,7 +100,7 @@ When /^I return to the site$/ do
 end
 
 When /^I sign in with a wrong email$/ do 
-	@visitor = @visitor.merge(email: "wrongemail@example.org")
+	@visitor = @visitor.merge(email: "wrong_email@example.org")
 end
 
 When /^I sign in with a wrong password$/ do 
@@ -180,8 +179,8 @@ Then /^I should see a mismatched password message$/ do
 end
 
 Then /^I see an invalid login message$/ do 
-	expect(page).to have_content "Sign up"
-	expect(page).to have_content "Forgot your password?"
+	#save_and_open_page
+	expect(page).to have_content "Invalid Email or password."
 end
 
 Then /^I should be signed in$/ do 
@@ -190,13 +189,12 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do 
-	expect(page).to have_content "Sign up"
-	expect(page).to have_content "Log in"
+	expect(page).to have_content "Signed out successfully."
 	expect(page).not_to have_content "Logout"
 end
 
 Then /^I should see a sign out message$/ do
-	expect(page).to have_content "You need to sign in or sign up before continuing" 
+	expect(page).to have_content "Signed out successfully." 
 end
 
 Then /^I should see an account updated message$/ do
