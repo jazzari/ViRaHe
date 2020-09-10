@@ -40,7 +40,7 @@ end
 
     ## GIVEN ##
 Given /^(?:|I )am not logged in$/ do 
-	visit 'users/sign_in'
+	visit 'users/sign_out'
 end
 
 Given /^I do not exist as a user$/ do 
