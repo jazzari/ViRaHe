@@ -35,4 +35,7 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Default Mailer Host
+  Rails.application.routes.default_url_options[:host] = 'domain.com'
 end
