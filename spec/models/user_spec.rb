@@ -76,8 +76,22 @@ RSpec.describe User, type: :model do
   			@user.password_confirmation = pass 
   			expect(@user).not_to be_valid
   		end
-
   	end
+
+    describe "#NAME" do 
+      before(:each) do 
+        @user = FactoryBot.build :user 
+      end
+
+      it "should have a name attribute" do 
+        expect(@user).to respond_to(:name)
+      end
+
+      it "should have a valid name length" do 
+        @user.name = "a" * 32
+        expect(@user).not_to be_valid
+      end
+    end
 
   end
 end
