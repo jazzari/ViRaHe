@@ -159,7 +159,6 @@ end
 
 When /^I add my name with valid data$/ do
 	fill_in "Name", with: "Some User"
-
 end
 
 	## THEN ##
