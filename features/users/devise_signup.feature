@@ -1,4 +1,4 @@
-Feature: Devise Authentication
+Feature: Devise Sign Up
 
 	In order to use the App
 	As a user

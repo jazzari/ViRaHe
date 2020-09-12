@@ -157,6 +157,11 @@ When /^I confirm the email$/ do
 	visit_in_email("Confirm my account")
 end
 
+When /^I add my name with valid data$/ do
+	fill_in "Name", with: "Some User"
+
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
 	expect(page).to have_content "Your email address has been successfully confirmed."

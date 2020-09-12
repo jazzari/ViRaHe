@@ -52,3 +52,13 @@ Feature: Edit User
 		And I save the edit form
 		Then I should see a password missing message
 
+	@testing
+	Scenario: User adds a name with valid data
+		Given I am logged in
+		And I confirm the email
+		When I sign in with valid credentials
+		When I edit my account
+		And I add my name with valid data
+		And I save the edit form
+		Then I should see a successful added name message
+
