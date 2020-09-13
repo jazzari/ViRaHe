@@ -28,13 +28,21 @@ def sign_in
 	visit '/users/sign_in'
 	fill_in "user_email", with: @visitor[:email]
 	fill_in "user_password", with: @visitor[:password]
+	
 	click_button "Log in"
+	
 end
 
 def create_user
 	create_visitor
 	delete_user
 	@user = FactoryBot.create(:user)
+end
+
+def create_admin_user
+	create_admin_visitor
+	delete_admin_user
+	@adminuser = FactoryBot.create(:admin)
 end
 
 
@@ -55,6 +63,13 @@ end
 Given /^I am logged in$/ do
 	create_user
 	sign_in 
+end
+
+Given /^I exist as an admin user$/ do
+	create_user
+	@user.admin = true
+	current_user = @user 
+	
 end
 
 	## WHEN ##
@@ -89,10 +104,12 @@ end
 
 When /^I sign in with valid credentials$/ do
 	sign_in
+	
 end
 
 When /^I see a successful sign in message$/ do 
 	expect(page).to have_content "Signed in successfully"
+
 end
 
 When /^I return to the site$/ do
@@ -155,7 +172,7 @@ end
 When /^I confirm the email$/ do 
 	open_email("visitor@example.org")
 	visit_in_email("Confirm my account")
-end
+	end
 
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
@@ -203,4 +220,13 @@ end
 
 Then /^I should see a password missing message$/ do 
 	expect(page).to have_content "Current password can't be blank"
+end
+
+Then /^I should see the admin link$/ do 
+	save_and_open_page
+	expect(page).to have_content "Go to AdminPanel"
+end
+
+Then /^I should not see the admin link$/ do 
+	expect(page).not_to have_content "Go to AdminPanel"
 end

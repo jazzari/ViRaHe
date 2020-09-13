@@ -52,8 +52,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name:      'srtabasco@gmail.com',
-    password:       'bdsm2017',
+    user_name:      'xxx',
+    password:       'xxx',
     domain:         'example.com',
     address:       'smtp.gmail.com',
     port:          '587',
