@@ -76,8 +76,17 @@ RSpec.describe User, type: :model do
   			@user.password_confirmation = pass 
   			expect(@user).not_to be_valid
   		end
-
   	end
+
+    describe "#ADMIN" do 
+      before(:each) do 
+        @user = FactoryBot.build :user 
+      end
+
+      it "should have an admin attribute" do 
+        expect(@user).to respond_to(:admin)
+      end
+    end
 
   end
 end
