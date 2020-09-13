@@ -93,5 +93,15 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "#ADMIN" do 
+      before(:each) do 
+        @user = FactoryBot.build :user 
+      end
+
+      it "should have an admin attribute" do 
+        expect(@user).to respond_to(:admin)
+      end
+    end
+
   end
 end
