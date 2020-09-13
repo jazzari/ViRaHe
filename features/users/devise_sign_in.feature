@@ -17,7 +17,7 @@ Feature: Sign In
 		When I return to the site
 		Then I should be signed in
 		Then I should not see the admin link
-	@testing
+
 	Scenario: Admin user signs in successfully
 		Given I exist as an admin user
 		And I am not logged in

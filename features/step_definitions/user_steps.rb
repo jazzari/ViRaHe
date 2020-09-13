@@ -40,9 +40,7 @@ def create_user
 end
 
 def create_admin_user
-	create_admin_visitor
-	delete_admin_user
-	@adminuser = FactoryBot.create(:admin)
+	@adminuser = FactoryBot.create(:user, :admin)
 end
 
 
@@ -66,10 +64,8 @@ Given /^I am logged in$/ do
 end
 
 Given /^I exist as an admin user$/ do
-	create_user
-	@user.admin = true
-	current_user = @user 
-	
+	create_visitor
+	create_admin_user
 end
 
 	## WHEN ##
@@ -104,7 +100,6 @@ end
 
 When /^I sign in with valid credentials$/ do
 	sign_in
-	
 end
 
 When /^I see a successful sign in message$/ do 
@@ -223,7 +218,6 @@ Then /^I should see a password missing message$/ do
 end
 
 Then /^I should see the admin link$/ do 
-	save_and_open_page
 	expect(page).to have_content "Go to AdminPanel"
 end
 
