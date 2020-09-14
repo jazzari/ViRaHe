@@ -16,6 +16,7 @@ gem 'jquery-rails', '~> 4.4'
 gem 'haml'
 gem 'devise', '~> 4.2'
 gem 'activeadmin'
+gem "figaro"
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
