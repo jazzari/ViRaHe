@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.4'
 gem 'haml'
 gem 'devise', '~> 4.2'
+gem 'activeadmin'
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
