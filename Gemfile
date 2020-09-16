@@ -17,6 +17,9 @@ gem 'haml'
 gem 'devise', '~> 4.2'
 gem 'activeadmin'
 gem "figaro"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
