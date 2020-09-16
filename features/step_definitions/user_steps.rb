@@ -40,6 +40,7 @@ def create_user
 end
 
 def create_admin_user
+	delete_user
 	@adminuser = FactoryBot.create(:user, :admin)
 end
 
