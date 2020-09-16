@@ -5,7 +5,6 @@
 Given /^I am logged in as an admin$/ do
 	create_admin_user
 	sign_in 
-	@adminuser.confirm
 end
 
 	## WHEN ##

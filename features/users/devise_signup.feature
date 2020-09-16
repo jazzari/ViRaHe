@@ -9,7 +9,6 @@ Feature: Devise Sign Up
 	
 	Scenario: User signs up with valid data
 		When I sign up with valid data
-		And I confirm the email
 		Then I should see a successful sign up message
 
 	Scenario: User signs up with invalid data

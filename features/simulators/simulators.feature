@@ -6,7 +6,5 @@ Feature: AdminUser can see Simulators
 	Scenario: Admin can see simulators
 		Given I exist as an admin user
 		And I am logged in as an admin
-		And I confirm the email
-		When I sign in with valid credentials
 		When I visit the admin dashboard
 		Then I should see the simulators button 

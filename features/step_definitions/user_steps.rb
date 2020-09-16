@@ -176,7 +176,7 @@ end
 
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
-	expect(page).to have_content "Your email address has been successfully confirmed."
+	expect(page).to have_content "Welcome! You have signed up successfully."
 end
 
 Then /^I should see an invalid email message$/ do 
