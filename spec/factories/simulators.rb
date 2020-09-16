@@ -1,5 +1,5 @@
-FactoryBot.define do
-  factory :simulator do
-    name { "MyString" }
-  end
+FactoryBot.define do 
+	factory :simulator do 
+		sequence(:name) { |n| "simulator N #{n}" }
+	end
 end

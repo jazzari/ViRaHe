@@ -1,5 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Simulator, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	describe '#Validations' do 
+
+		it "should have valid factory" do 
+			expect(FactoryBot.build :simulator).to be_valid
+		end
+
+    	it "should validate presence of name" do 
+    		simulator = FactoryBot.build :simulator, name: ''
+      		expect(simulator).not_to be_valid	
+    	end
+
+	end
+
 end
