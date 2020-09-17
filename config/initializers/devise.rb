@@ -32,7 +32,7 @@ Devise.setup do |config|
   config.sign_out_via = Rails.env.test? ? :get : :delete
 
   config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
-  Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email, userinfo.profile'
+    Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email, userinfo.profile'
   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
-  Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile, email', info_fields: 'name'
+    Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'email'
 end
