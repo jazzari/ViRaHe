@@ -10,6 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'support/controller_helpers'
 
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -45,6 +46,8 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerHelpers, :type => :controller
+
+  config.include Rails.application.routes.url_helpers
 
 end
 
