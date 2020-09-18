@@ -1,12 +1,12 @@
 
 %h2 HomePage
 
-- if user_signed_in?
-   Logged in as %strong= current_user.email
-   = link_to "Edit Profile", edit_user_registration_path
-   = link_to "Logout", destroy_user_session_path, method: :delete
-   = link_to "Go to Admin Panel", admin_root_path if current_user.admin == true
-- else
-   = link_to "Sign up", new_user_registration_path
-   = link_to "Log in", new_user_session_path	
-  
+/ - if user_signed_in?
+/    Logged in as %strong= current_user.email
+/    = link_to "Edit Profile", edit_user_registration_path
+/    = link_to "Logout", destroy_user_session_path, method: :delete
+/    = link_to "Go to Admin Panel", admin_root_path if current_user.admin == true
+/ - else
+/    = link_to "Sign up", new_user_registration_path
+/    = link_to "Log in", new_user_session_path	
+/   

@@ -1,4 +1,0 @@
-Feature: Devise Sign Up
-
-
-

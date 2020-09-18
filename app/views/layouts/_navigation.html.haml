@@ -8,6 +8,7 @@
   - if user_signed_in?
     %li
       = link_to 'Edit account', edit_user_registration_path
+      = link_to "Go to Admin Panel", admin_root_path if current_user.admin == true
   - else
     %li
       = link_to 'Sign up', new_user_registration_path

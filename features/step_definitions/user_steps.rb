@@ -174,6 +174,10 @@ When /^I add my name with valid data$/ do
 	fill_in "Name", with: "Some User"
 end
 
+When /^I visit the Home Page$/ do
+	visit '/' 
+end
+
 	## THEN ##
 Then /^I should see a successful sign up message$/ do 
 	expect(page).to have_content "Welcome! You have signed up successfully."
@@ -229,3 +233,8 @@ end
 Then /^I should not see the admin link$/ do 
 	expect(page).not_to have_content "Go to Admin Panel"
 end
+
+Then /^I should see a "([^"]*)" link$/ do |text|
+	expect(page).to have_content(text)
+end
+
