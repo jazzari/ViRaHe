@@ -36,6 +36,6 @@ Devise.setup do |config|
   #config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
    # Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'email'
    config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], scope: 'email'
-   config.omniauth :google_oauth2, ENV["GOOGLE_APP_ID"], ENV["GOOGLE_APP_SECRET"], 'userinfo.email, userinfo.profile'
-   
+   config.omniauth :google_oauth2, ENV["GOOGLE_APP_ID"], ENV["GOOGLE_APP_SECRET"], scope: 'userinfo.email, userinfo.profile'
+
 end
