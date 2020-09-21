@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   
-  ActiveAdmin.routes(self)
-  root to: 'home#index'
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
+  	ActiveAdmin.routes(self)
+  	root to: 'home#index'
+  	devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
+
+  	namespace :admin do
+	    resources :simulators do
+	      resources :tracks 
+	    end
+	end
 
 end

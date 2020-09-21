@@ -19,3 +19,7 @@ end
 Then /^I should see the simulators button$/ do 
 	expect(page).to have_content("Simulators")
 end
+
+Then /^I should see the tracks button$/ do 
+	expect(page).to have_content("Tracks")
+end
