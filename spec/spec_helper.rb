@@ -1,3 +1,15 @@
+  require 'omniauth'
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+    	'provider' => 'facebook',
+        'uid' => '12345',
+        'info' => {
+	                'name' => 'tester',
+	                'email' => 'tester@example.org'
+	            }
+	           })
+ 
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
