@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :car do
-    name { "MyString" }
-    simulator { nil }
+    name { "Car01" }
+	association :simulator
   end
 end
