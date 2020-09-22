@@ -23,3 +23,7 @@ end
 Then /^I should see the tracks button$/ do 
 	expect(page).to have_content("Tracks")
 end
+
+Then /^I should see the cars button$/ do 
+	expect(page).to have_content("Cars")
+end
