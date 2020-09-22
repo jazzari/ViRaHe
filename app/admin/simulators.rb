@@ -1,6 +1,7 @@
 ActiveAdmin.register Simulator do
 
-   	permit_params :name, tracks_attributes: [:id, :_destroy, :name]
+   	permit_params :name, tracks_attributes: [:id, :_destroy, :name], 
+   		cars_attributes: [:id, :_destroy, :name]
 
  	index do
         selectable_column
@@ -32,7 +33,7 @@ ActiveAdmin.register Simulator do
 	      		o.input :name, label: "Track Name"
 	      	end
 	    end
-	    f.actions
+	    #f.actions
 
 		f.inputs "Cars" do
 	      	f.has_many :cars, heading: false, allow_destroy: true do |c|
