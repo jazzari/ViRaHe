@@ -8,10 +8,6 @@ class OmniauthController < Devise::OmniauthCallbacksController
 		@user = set_login("google")
 	end
 
-	# def failure
-	# 	flash[:error] = "There was a problem signing you in. Please try signing in later."
-	# 	redirect_to new_user_registration_url
-	# end
 end
 
 private
