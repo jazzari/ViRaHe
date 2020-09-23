@@ -4,7 +4,7 @@ RSpec.describe Admin::CarsController, type: :controller do
 	render_views
 
 	let(:page) { Capybara::Node::Simple.new(response.body) } 
-	user = FactoryBot.create :user, :admin
+	let(:user) { FactoryBot.create :user, :admin }
 	let(:valid_attributes) do 
 		FactoryBot.attributes_for :car
 	end
