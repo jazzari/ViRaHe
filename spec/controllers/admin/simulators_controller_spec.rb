@@ -5,6 +5,10 @@ RSpec.describe Admin::SimulatorsController, type: :controller do
 
 	let(:page) { Capybara::Node::Simple.new(response.body) } 
 	let(:user) { FactoryBot.create :user, :admin }
+	before(:each) do
+		log_in(user)
+	end
+
 	let(:valid_attributes) do 
 		FactoryBot.attributes_for :simulator
 	end
@@ -13,9 +17,7 @@ RSpec.describe Admin::SimulatorsController, type: :controller do
 	end
 	let!(:simulator) { FactoryBot.create :simulator }
 
-	before(:each) do
-		log_in(user)
-	end
+
 
 	describe "GET index" do 
   		before(:each) do 
@@ -28,6 +30,44 @@ RSpec.describe Admin::SimulatorsController, type: :controller do
 
   		it "should render the expected columns" do 
   			expect(page).to have_content(simulator.name)
+  		end
+
+  	end
+
+  	describe "POST create" do 
+
+  		context "with valid params" do 
+  			it "should create a new simulator" do 
+  				expect {
+  					post :create, params: { simulator: valid_attributes }
+  				}.to change(Simulator, :count).by(1)
+  			end
+
+  			it "should redirect to simulator's tracks" do 
+  				post :create, params: { simulator: valid_attributes }
+  				expect(response).to have_http_status(:redirect)
+  				expect(response).to redirect_to admin_simulator_path(Simulator.last)
+  			end
+
+  			it "should save a new simulator in the database" do 
+  				post :create, params: { simulator: valid_attributes }
+  				simulator = Simulator.last
+  				expect(simulator.name).to eq(valid_attributes[:name])
+  			end
+  		end
+
+  		context "with invalid params" do 
+
+  			it "should return http success with invalid params" do 
+  				post :create, params: { simulator: invalid_attributes }
+  				expect(response).to have_http_status(:success)
+  			end
+
+  			it "should not save the simulator in the database" do 
+  				expect do 
+  					post :create, params: { simulator: invalid_attributes }
+  				end.not_to change(Simulator, :count)
+  			end
   		end
 
   	end
