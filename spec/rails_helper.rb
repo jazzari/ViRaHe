@@ -42,10 +42,11 @@ RSpec.configure do |config|
     end
   end
 
-  config.include Warden::Test::Helpers
-  config.include Devise::Test::ControllerHelpers
-  config.include ControllerHelpers, :type => :controller
 
+
+  config.include Warden::Test::Helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller 
+  config.include ControllerHelpers, :type => :controller
   config.include Rails.application.routes.url_helpers
 
 

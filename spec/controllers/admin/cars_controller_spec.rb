@@ -82,5 +82,16 @@ RSpec.describe Admin::CarsController, type: :controller do
   		end
   	end
 
+  	describe "GET show" do 
+  		before do 
+  			get :show, params: { id: car.id }
+  		end
+
+  		it "should return http success" do 
+  			expect(response).to have_http_status(:success)
+  		end
+
+  	end
+
 
 end
