@@ -1,5 +1,4 @@
 
-
 	## GIVEN ##
 
 Given /^I am logged in as an admin$/ do
@@ -10,7 +9,6 @@ end
 	## WHEN ##
 
 When /^I visit the admin dashboard$/ do
-	
 	click_link "Go to Admin Panel"
 end
 

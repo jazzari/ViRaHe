@@ -91,6 +91,21 @@ RSpec.describe Admin::CarsController, type: :controller do
   			expect(response).to have_http_status(:success)
   		end
 
+  		it "should render form's elements" do 
+  			expect(page).to have_content(car.name)
+  			expect(page).to have_content(car.simulator_id)
+  		end
+
+  	end
+
+  	describe "DELETE destroy" do 
+
+  		it "should destroy the car" do 
+  			expect {
+  				delete :destroy, params: { id: car.id }
+  			}.to change(Car, :count).by(-1)
+  		end
+
   	end
 
 

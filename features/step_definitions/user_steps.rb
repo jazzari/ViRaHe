@@ -28,7 +28,6 @@ def sign_in
 	visit '/users/sign_in'
 	fill_in "user_email", with: @visitor[:email]
 	fill_in "user_password", with: @visitor[:password]
-	
 	click_button "Log in"
 	
 end
@@ -105,7 +104,6 @@ end
 
 When /^I see a successful sign in message$/ do 
 	expect(page).to have_content "Signed in successfully"
-
 end
 
 When /^I return to the site$/ do
