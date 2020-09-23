@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OmniauthController do 
 	describe "#FACEBOOK_AUTH" do 
 		before do
-			request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
+			request.env["devise.mapping"] = Devise.mappings[:user]
 	  		request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] 
 		end
 
@@ -19,7 +19,7 @@ RSpec.describe OmniauthController do
 
 	describe "#GOOGLE_AUTH" do 
 		before do
-			request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
+			request.env["devise.mapping"] = Devise.mappings[:user] 
 	  		request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google] 
 		end
 

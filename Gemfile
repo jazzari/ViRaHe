@@ -34,6 +34,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.2'
+  gem 'rails-controller-testing'
 end
 
 group :development do
