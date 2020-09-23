@@ -83,6 +83,8 @@ RSpec.describe Admin::SimulatorsController, type: :controller do
 
   		it "should render form's elements" do 
   			expect(page).to have_field('Simulator Name', with: simulator.name)
+  			expect(page).to have_content("Add New Track")
+  			expect(page).to have_content("Add New Car")
   		end
   	end
 
