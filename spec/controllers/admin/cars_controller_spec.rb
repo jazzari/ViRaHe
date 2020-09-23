@@ -106,6 +106,11 @@ RSpec.describe Admin::CarsController, type: :controller do
   			}.to change(Car, :count).by(-1)
   		end
 
+  		it "should redirects to the field" do
+	      delete :destroy, params: { id: car.id }
+	      expect(response).to redirect_to(admin_cars_path)
+	    end
+
   	end
 
 
