@@ -11,7 +11,7 @@ RSpec.describe Lap, type: :model do
     end
 
   	it "should test that the factory is valid" do 
-  		expect(build :lap).to be_valid
+  		expect(FactoryBot.build :lap).to be_valid
   	end
 
   end
