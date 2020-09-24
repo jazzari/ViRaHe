@@ -93,7 +93,6 @@ RSpec.describe Admin::TracksController, type: :controller do
 
   		it "should render form's elements" do 
   			expect(page).to have_content(track.name)
-  			expect(page).to have_content(track.simulator_id)
   		end
 
   	end
